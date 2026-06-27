@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ CodeQuest // Grid Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400;700&family=Syncopate:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('globalThemeSelection') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="nav-logo">CODE_QUEST //</div>
+        <div class="nav-right-container">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">DASHBOARD</a></li>
+                <li class="dropdown" id="coursesDropdown">
+                    <a href="#" class="dropbtn">MODULES ▼</a>
+                    <div class="dropdown-content">
+                        <a href="lesson.html?track=python">PYTHON CORE</a>
+                        <a href="lesson.html?track=html">HTML5 UI</a>
+                        <a href="lesson.html?track=c">C SYSTEM</a>
+                        <a href="lesson.html?track=app_dev">APP DEV</a>
+                    </div>
+                </li>
+                <li><a href="login.html" style="color: var(--text-secondary);">LOGOUT</a></li>
+            </ul>
+            <button class="theme-toggle-btn" id="themeToggle">MODE // DARK</button>
+        </div>
+    </nav>
+
+    <div class="core-wrapper" style="padding-top: 100px;">
+        
+        <div class="welcome-section" style="margin-bottom: 25px;">
+            <h1 class="glitch-text" style="margin-top: 0; padding-top: 0;">WELCOME_BACK_AGENT</h1>
+            <p style="margin-bottom: 0;">Accessing localized software optimization data arrays... Ready for input sequencing metrics.</p>
+        </div>
+
+        <div class="dashboard-layout">
+            
+            <div class="dash-left-col">
+                <div class="challenge-box" style="margin-bottom: 30px;">
+                    <div class="corner-tick tl"></div><div class="corner-tick tr"></div>
+                    <h3 class="header-sync" style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; margin-top: 0; padding-bottom: 8px; border-bottom: 1px solid var(--border-color);">// AI_NAVIGATION_CO_PILOT</h3>
+                    <p style="font-size: 0.75rem; margin: 12px 0; color: var(--text-secondary);">Tell the terminal what you want to build or learn (e.g., "I want to learn python" or "open html").</p>
+                    <div style="display: flex; gap: 10px; width: 100%;">
+                        <input type="text" id="aiPromptInput" placeholder="Enter target sequence prompt command..." style="flex-grow: 1;">
+                        <button class="cyber-btn" id="aiSubmitBtn" style="white-space: nowrap;">PARSE_INTENT //</button>
+                    </div>
+                    <div id="aiFeedback" style="margin-top: 12px; font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; padding-left: 4px; display: none;"></div>
+                    <div class="corner-tick bl"></div><div class="corner-tick br"></div>
+                </div>
+
+                <div class="tracks-container">
+                    <h2 class="section-title" style="font-family: 'Orbitron', sans-serif; font-size: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">// ACTIVE_CURRICULUM_TRACKS</h2>
+                    
+                    <div class="track-row">
+                        <div class="track-info"><strong>PYTHON MASTERCLASS</strong></div>
+                        <div class="progress-bar-container"><div class="progress-bar-fill" id="pythonBar"></div></div>
+                        <button class="cyber-btn-sm" onclick="window.location.href='lesson.html?track=python'">OPEN</button>
+                    </div>
+                    <div class="track-row">
+                        <div class="track-info"><strong>HTML5 / WEB INTERFACES</strong></div>
+                        <div class="progress-bar-container"><div class="progress-bar-fill" id="htmlBar"></div></div>
+                        <button class="cyber-btn-sm" onclick="window.location.href='lesson.html?track=html'">OPEN</button>
+                    </div>
+                    <div class="track-row">
+                        <div class="track-info"><strong>C SYSTEMS ARCHITECTURE</strong></div>
+                        <div class="progress-bar-container"><div class="progress-bar-fill" id="cBar"></div></div>
+                        <button class="cyber-btn-sm" onclick="window.location.href='lesson.html?track=c'">OPEN</button>
+                    </div>
+                    <div class="track-row">
+                        <div class="track-info"><strong>MOBILE APPLICATIONS</strong></div>
+                        <div class="progress-bar-container"><div class="progress-bar-fill" id="appDevBar"></div></div>
+                        <button class="cyber-btn-sm" onclick="window.location.href='lesson.html?track=app_dev'">OPEN</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dash-right-col">
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="stat-card">
+                        <h4>// OVERALL_ACCURACY</h4>
+                        <div class="val" id="uiAccuracy">0%</div>
+                        <div class="subtext">Based on compile failure logs</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>// MODULES_CLEARED</h4>
+                        <div class="val" id="uiModules">0</div>
+                        <div class="subtext">Total curriculum nodes verified</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>// CODE_EXECUTION_RUNS</h4>
+                        <div class="val" id="uiRuns">0</div>
+                        <div class="subtext">Total terminal evaluations</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Load Real Stats from app.js memory
+        window.addEventListener('DOMContentLoaded', () => {
+            if(typeof getGlobalStats === 'function') {
+                const stats = getGlobalStats();
+                document.getElementById('uiAccuracy').innerText = `${stats.accuracy}%`;
+                document.getElementById('uiModules').innerText = stats.completed;
+                document.getElementById('uiRuns').innerText = stats.runs;
+            }
+        });
+
+        // Dropdown
+        const dropdownBtn = document.getElementById('coursesDropdown');
+        const dropdownMenu = dropdownBtn.querySelector('.dropdown-content');
+        dropdownBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); dropdownMenu.classList.toggle('show-dropdown'); });
+        document.addEventListener('click', (e) => { if (!dropdownBtn.contains(e.target)) dropdownMenu.classList.remove('show-dropdown'); });
+
+        // AI Navigator
+        document.getElementById('aiSubmitBtn').addEventListener('click', handleAiNavigation);
+        document.getElementById('aiPromptInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') handleAiNavigation(); });
+
+        function handleAiNavigation() {
+            const inputField = document.getElementById('aiPromptInput');
+            const feedback = document.getElementById('aiFeedback');
+            const query = inputField.value.toLowerCase().trim();
+            feedback.style.display = "none";
+
+            if (!query) {
+                feedback.style.color = "var(--error-red)";
+                feedback.innerText = "> WARNING // Prompt sequence void. Please type an explicit query instruction.";
+                feedback.style.display = "block";
+                return;
+            }
+            if (query.includes('python') || query.includes('py ') || query.includes('scripting')) { executeRedirection("PYTHON CURRICULUM ARCHITECTURE", "lesson.html?track=python"); return; }
+            if (query.includes('html') || query.includes('css') || query.includes('web') || query.includes('site')) { executeRedirection("HTML5 UI DESIGNS ROOM", "lesson.html?track=html"); return; }
+            if (query.includes(' c ') || query.endsWith(' c') || query.startsWith('c ') || query.includes('system')) { executeRedirection("C ARCHITECTURE OPERATING CHANNELS", "lesson.html?track=c"); return; }
+            if (query.includes('app') || query.includes('mobile') || query.includes('phone') || query.includes('android')) { executeRedirection("VIRTUAL PHONE DEV WORKSPACE", "lesson.html?track=app_dev"); return; }
+            
+            feedback.style.color = "var(--error-red)";
+            feedback.innerText = `> EXCEPTION // Token pattern unrecognized: "${inputField.value}". Try 'python', 'web', 'app', or 'c'.`;
+            feedback.style.display = "block";
+        }
+
+        function executeRedirection(trackFriendlyName, targetUrl) {
+            const feedback = document.getElementById('aiFeedback');
+            feedback.style.color = "var(--success-green)";
+            feedback.innerText = `> INTENT MATCHED // Initializing bridge to ${trackFriendlyName}...`;
+            feedback.style.display = "block";
+            setTimeout(() => { window.location.href = targetUrl; }, 800);
+        }
+
+        // Theme Toggle
+        const toggleBtn = document.getElementById('themeToggle');
+        const rootElement = document.documentElement;
+        function syncToggleBtnLabel() { toggleBtn.textContent = rootElement.getAttribute('data-theme') === 'light' ? 'MODE // LIGHT' : 'MODE // DARK'; }
+        syncToggleBtnLabel();
+
+        toggleBtn.addEventListener('click', () => {
+            const nextTheme = rootElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            rootElement.setAttribute('data-theme', nextTheme);
+            localStorage.setItem('globalThemeSelection', nextTheme);
+            syncToggleBtnLabel();
+        });
+    </script>
+</body>
+</html>
